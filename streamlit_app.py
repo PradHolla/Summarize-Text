@@ -13,13 +13,13 @@ text = st.text_area("Enter Text Here")
 
 if st.button("Summarize"):
     if summarizer == "t5-base":
-        GPT2_model = pipeline("summarization", model="santiviquez/ssr-base-finetuned-samsum-en")
-        summary = GPT2_model(text, max_length=200, min_length=200, do_sample=False)
+        GPT2_model = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
+        summary = GPT2_model(text, max_length=400, min_length=250, do_sample=False)
         summary = summary[0]['summary_text']
 
 
     elif summarizer == "Hugging Face":
         summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-        summary = summarizer(text, max_length=200, min_length=200, do_sample=False)
+        summary = summarizer(text, max_length=400, min_length=250, do_sample=False)
         summary = summary[0]['summary_text']
     st.write(summary)
