@@ -31,4 +31,9 @@ if text is not None and summarize:
     payload = {"inputs": text, "parameters": {"max_length": max_length, "min_length": min_length, "do_sample": False}}
     response = query(payload)
     summary = response[0]['summary_text']
-    st.write(summary)
+    summary = summary.split('.')
+    summary = list(filter(None, summary))
+    for i in range(len(summary)):
+        summary[i] = '- ' + summary[i] + '.'
+    listToStr = '\n'.join([str(ele) for ele in summary])
+    st.write(listToStr)
