@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
+API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-xsum"
 headers = {"Authorization": f"{st.secrets['api_token']}"}
 
 st.set_page_config(page_title="Text Summarizer" ,layout="wide", page_icon=":books:")
